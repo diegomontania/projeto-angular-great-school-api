@@ -2,6 +2,11 @@
 
 Uma API REST para gerenciar informações de uma escola, como alunos, professores e turmas.
 
+## Relacionamento com o Frontend
+
+Este repositório serve como o backend para o projeto frontend Angular "GreatSchool", disponível em:
+[https://github.com/diegomontania/projeto-angular-great-school](https://github.com/diegomontania/projeto-angular-great-school)
+
 ## Tecnologias Utilizadas
 
 *   .NET 10.0

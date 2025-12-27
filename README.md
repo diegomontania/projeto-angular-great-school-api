@@ -1,6 +1,6 @@
 # GreatSchool API
 
-Uma API REST para gerenciar informações de uma escola, como alunos, professores e turmas.
+Uma API REST para gerenciar informações de uma escola, como alunos, professores e turmas (BETA).
 
 ## Relacionamento com o Frontend
 

@@ -23,7 +23,12 @@ namespace GreatSchool.API.Models
         public string Sobrenome { get; set; }
 
         [Required]
-        [RegularExpression(@"\([1-9]\d\)\s\d{4,5}-\d{4}", ErrorMessage = "Número de telefone inválido")]
+        [MaxLength(2)]
+        [RegularExpression(@"^[1-9][0-9]$", ErrorMessage = "DDD inválido")]
+        public string DddTelefone { get; set; }
+
+        [Required]
+        [RegularExpression(@"^\d{8,9}$", ErrorMessage = "Número de telefone inválido")]
         public string Telefone { get; set; }
 
         [Required]

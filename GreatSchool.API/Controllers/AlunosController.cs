@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GreatSchool.Domain.Entities;
+using GreatSchool.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GreatSchool.API.Context;
-using GreatSchool.API.Models;
 
 namespace GreatSchool.API.Controllers
 {

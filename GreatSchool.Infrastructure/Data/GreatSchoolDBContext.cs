@@ -1,7 +1,8 @@
-﻿using GreatSchool.API.Models;
+﻿using GreatSchool.Domain.Entities;
+using GreatSchool.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
-namespace GreatSchool.API.Context
+namespace GreatSchool.Infrastructure.Data
 {
     //fluent api o que pode ser feito, definir nome de tabelas, nome de chaves primarias,
     //ignorar campos na classe para serem ignorados na criacao da tabela, relacionamentos

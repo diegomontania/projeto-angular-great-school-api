@@ -1,0 +1,14 @@
+﻿Representa a camada que irá "expor" o programa/api para o front-end ou qualquer outra aplicação que irá consumi-lo.
+
+Regra : API depende apenas do .Application! Nunca o oposto.
+
+O que é para estar nesta lib :
+- Controllers
+- Rotas http (Http rounting)
+- Autenticação autorização (Authentication Autorization)
+- Requests/responses
+- Versionamento da api
+
+O que não deve estar aqui :
+- Regras de negocio
+- Lógica de acesso aos dados do banco

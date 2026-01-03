@@ -1,0 +1,17 @@
+﻿Representa as implementações técnicas. Essa camada proporciona COMO as coisas são feitas e não O QUE são feitas.
+Nessa camada também é possivel implementar serviços externos. Mantem questões técnicas de implementação longe das regras de negocio
+
+Regra : A camada da infraestrutura depende da cadama de aplicação .Application
+        .Application e .Domain não dependem da .Infraestructure
+
+O que é para estar nesta lib :
+- Entitify Framework Core
+- Implementações de repositorio (Repository implementations)
+- Configurações de banco de dados
+- Migrations
+- Serviços externos (Email, cache, outras APIs)
+
+O que não deve estar aqui :
+- Regras de negocio
+- Casos de uso
+- Controllers

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Models;
+﻿using GreatSchool.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GreatSchool.API.Controllers
 {

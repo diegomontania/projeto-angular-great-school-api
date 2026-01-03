@@ -1,0 +1,18 @@
+﻿Representa usos de caso e orquestração, ou seja, define o que o sistema pode fazer.
+Essa camada, coordenada a camada de Domain (Greatschool.Domain), mantem a lógica das regras de negocio testaveis sem a api web
+
+Regra : A camada da aplicação depende apenas de .Domain (GreatSchool.Domain)
+
+(entender melhor o que é cada coisa, perguntar ao gpt)
+O que é para estar nesta lib :
+- Casos de uso 
+- CQRS Commands and consultas
+- Manipuladores do MediatR 
+- DTOs
+- Fluxos de trabalho
+
+O que não deve estar aqui :
+- Controllers
+- Entity frameworkd
+- HTTP
+- UI Logic

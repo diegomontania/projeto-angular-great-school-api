@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Models
+namespace GreatSchool.Domain.Entities
 {
     public class ApresentacaoAPI
     {
@@ -17,7 +17,6 @@ namespace Models
                 return "Seja bem vindo a api";
             }
         }
-
 
         //no construtor cria as rotas
         public ApresentacaoAPI()

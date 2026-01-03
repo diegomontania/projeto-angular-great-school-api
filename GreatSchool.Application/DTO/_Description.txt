@@ -1,0 +1,7 @@
+﻿What are DTOs?
+
+Objects that carry data between layers
+Protect your entities from being exposed directly
+Can have different properties than entities (security, validation)
+
+https://medium.com/@ayoubseddiki132/mastering-dtos-best-practices-and-pitfalls-to-avoid-fda9b3db1eb9

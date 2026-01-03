@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GreatSchool.API.Models
+namespace GreatSchool.Domain.Entities
 {
     public class Professor
     {

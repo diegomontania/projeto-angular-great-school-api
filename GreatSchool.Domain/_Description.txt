@@ -1,0 +1,17 @@
+﻿Representa as regras de negocio e conceitos sem tecnologia.
+
+Regra : Nada dentro de 'GreatSchool.Domain', deve depender de outra coisa
+
+O que é para estar nesta lib :
+- Entidades (ou seja, objetos principais dos negocios)
+- Objetos de valor
+- Interfaces de dominio (Contratos que cada objeto 'está assinando')
+- Regras de negocio diversas 
+
+O que não deve estar aqui :
+- Entity frameworkd
+- HTTP
+- Controllers
+- DTOs
+- MediatR
+- Logging

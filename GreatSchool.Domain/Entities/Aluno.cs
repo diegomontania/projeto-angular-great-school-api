@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace GreatSchool.Domain.Entities
 {
@@ -11,7 +12,7 @@ namespace GreatSchool.Domain.Entities
         public string Telefone { get; set; }
         public string Email { get; set; }
         public string Estado { get; set; }
-        public DateTime DataMatricula { get; set; }
+        public DateTime DataMatricula { get; private set; } //set privado para evitar que a data de matricula seja alterada apos a criacao do aluno
 
         //1 aluno está associado a 1 turma - ForeignKey
         //possui um nullable na propriedade ID e na propriedade de navegacao, significa que o relacionamento é opcional. Um aluno pode ter ou não uma turma.
@@ -19,5 +20,11 @@ namespace GreatSchool.Domain.Entities
         public int? TurmaId { get; set; }
 
         public Turma? Turma { get; set; } //propriedade de navegacao https://stackoverflow.com/a/11508155/13156642
+
+        public void SetMatricula(DateTime dateTime)
+        {
+            if (DataMatricula == default) // Only set if not already set
+                DataMatricula = dateTime;
+        }
     }
 }

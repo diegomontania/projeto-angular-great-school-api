@@ -1,6 +1,11 @@
 ﻿Representa usos de caso e orquestração, ou seja, define o que o sistema pode fazer.
 Essa camada, coordenada a camada de Domain (Greatschool.Domain), mantem a lógica das regras de negocio testaveis sem a api web
 
+Pergunta que se deve fazer : O que irei implementar é sobre regras de negocio ou orquestração de casos de uso?
+Se sim, deve estar aqui.
+Exemplo : Implementar um caso de uso que cria um novo estudante, validando as regras de negocio na camada de dominio (GreatSchool.Domain) e orquestrando o fluxo de trabalho.
+Ou seja, a camada de aplicação deve chamar em ordem as regras de negocio (Metodos) na camada de dominio (GreatSchool.Domain) para realizar o caso de uso.
+
 Regra : A camada da aplicação depende apenas de .Domain (GreatSchool.Domain)
 
 (entender melhor o que é cada coisa, perguntar ao gpt)

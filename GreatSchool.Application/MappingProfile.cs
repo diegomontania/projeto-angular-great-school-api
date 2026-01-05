@@ -13,7 +13,7 @@ namespace GreatSchool.Application
             CreateMap<DTO.Aluno.CreateAlunoDto, Domain.Entities.Aluno>();
 
             //UpdateAlunoDto to Aluno
-            CreateMap<DTO.Aluno.UpdateAlunoDto, Domain.Entities.Aluno>();
+            CreateMap<DTO.Aluno.AlunoDto, Domain.Entities.Aluno>();
 
             //Aluno to AlunoDto
             CreateMap<Domain.Entities.Aluno, DTO.Aluno.AlunoDto>();

@@ -4,6 +4,10 @@ namespace GreatSchool.Application.DTO.Aluno
 {
     public class CreateAlunoDto
     {
+        [Required]
+        [Key()]
+        public int Id { get; set; }
+
         public string Nome { get; set; }
 
         [Required]

@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using GreatSchool.Domain.Entities;
-using GreatSchool.Infrastructure.Data;
+using GreatSchool.Application.DTO.Aluno;
+using GreatSchool.Application.Interfaces.Aluno;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace GreatSchool.API.Controllers
 {
@@ -12,97 +10,66 @@ namespace GreatSchool.API.Controllers
     [ApiController]
     public class AlunosController : ControllerBase
     {
-        private readonly GreatSchoolDBContext _context;
+        private readonly IAlunoService _alunoService;
 
-        public AlunosController(GreatSchoolDBContext context)
+        public AlunosController(IAlunoService alunoService)
         {
-            _context = context;
+            _alunoService = alunoService;
         }
 
         // GET: api/Alunos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Aluno>>> GetAlunos()
+        public async Task<ActionResult<IEnumerable<AlunoDto>>> GetAlunos()
         {
-            return await _context.Alunos.ToListAsync();
+            var alunos = await _alunoService.GetAllAlunosAsync();
+            return Ok(alunos);
         }
 
         // GET: api/Alunos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Aluno>> GetAluno(int id)
+        public async Task<ActionResult<AlunoDto>> GetAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
+            var aluno = await _alunoService.GetAlunoByIdAsync(id);
 
             if (aluno == null)
-            {
                 return NotFound();
-            }
 
-            return aluno;
+            return Ok(aluno);
         }
 
-        // PUT: api/Alunos/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        // PUT: api/Alunos/5 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAluno(int id, Aluno aluno)
-       {
-            if (id != aluno.Id)
-            {
-                return BadRequest();
-            }
+        public async Task<IActionResult> PutAluno(int id, AlunoDto alunoDto)
+        {
+            var alunoAtualizado = await _alunoService.UpdateAlunoAsync(id, alunoDto);
 
-            _context.Entry(aluno).State = EntityState.Modified;
+            if (alunoAtualizado == null)
+                return NotFound(); 
+            
+            return Ok(alunoAtualizado);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AlunoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
         }
 
         // POST: api/Alunos
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Aluno>> PostAluno(Aluno aluno)
+        public async Task<ActionResult<AlunoDto>> PostAluno(CreateAlunoDto alunoDto)
         {
-            _context.Alunos.Add(aluno);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetAluno", new { id = aluno.Id }, aluno);
+            var alunoCriado = await _alunoService.CreateAlunoAsync(alunoDto);
+            return CreatedAtAction("GetAlunoAsync", new { id = alunoCriado.Id }, alunoDto);
         }
 
         // DELETE: api/Alunos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Aluno>> DeleteAluno(int id)
+        public async Task<ActionResult<AlunoDto>> DeleteAluno(int id)
         {
-            var aluno = await _context.Alunos.FindAsync(id);
-            if (aluno == null)
-            {
+            var aluno = await _alunoService.DeleteAlunoAsync(id);
+
+            if (!aluno)
                 return NotFound();
-            }
 
-            _context.Alunos.Remove(aluno);
-            await _context.SaveChangesAsync();
-
-            return aluno;
-        }
-
-        private bool AlunoExists(int id)
-        {
-            return _context.Alunos.Any(e => e.Id == id);
+            return Ok(aluno);
         }
     }
 }

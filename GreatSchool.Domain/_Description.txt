@@ -1,5 +1,9 @@
 ﻿Representa as regras de negocio e conceitos sem tecnologia.
 
+Pergunta que se deve fazer : O que irei implementar é sobre regras de negocio ou conceitos do dominio?
+Se sim, deve estar aqui.
+Exemplo : Implementar uma regra de negocio que valida se um estudante pode se matricular em um curso baseado na sua idade.
+
 Regra : Nada dentro de 'GreatSchool.Domain', deve depender de outra coisa
 
 O que é para estar nesta lib :

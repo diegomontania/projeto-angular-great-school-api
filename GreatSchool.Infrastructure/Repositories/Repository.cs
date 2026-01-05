@@ -1,6 +1,8 @@
-﻿using GreatSchool.Domain.Interfaces;
+﻿using GreatSchool.Domain.Entities;
+using GreatSchool.Domain.Interfaces;
 using GreatSchool.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 
 namespace GreatSchool.Infrastructure.Repositories
 {
@@ -17,29 +19,47 @@ namespace GreatSchool.Infrastructure.Repositories
             DbSet = _context.Set<T>();
         }
 
-        public Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var t = await DbSet.FindAsync(id);
+
+                if (t != null)
+                    return t;
+                else
+                    throw new Exception($"Entity {id} not found");
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Entity {id} not found");
+            }
         }
 
-        public Task<T> AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<T> UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(await GetByIdAsync(id));
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

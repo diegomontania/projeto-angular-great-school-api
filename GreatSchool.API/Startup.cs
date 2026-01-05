@@ -1,4 +1,10 @@
+using GreatSchool.Application;
+using GreatSchool.Application.Interfaces.Aluno;
+using GreatSchool.Application.Services;
+using GreatSchool.Domain.Entities;
+using GreatSchool.Domain.Interfaces;
 using GreatSchool.Infrastructure.Data;
+using GreatSchool.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,10 +39,21 @@ namespace GreatSchool.API
                     });
             });
 
-            services.AddControllers();
-
             //adiciona o contexto do banco de dados no servico
             services.AddDbContext<GreatSchoolDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("GreatSchoolDB")));
+
+            //adiciona automapper
+            services.AddAutoMapper(cfg => { }, typeof(MappingProfile));
+
+            //adiciona repositorios
+            services.AddScoped<IAlunoRepository, AlunoRepository>();
+            services.AddScoped<IRepository<Aluno>, Repository<Aluno>>();
+
+            //adiciona services
+            services.AddScoped<IAlunoService, AlunoService>();
+
+            //adiciona controllers
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

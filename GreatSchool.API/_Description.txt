@@ -1,5 +1,9 @@
 ﻿Representa a camada que irá "expor" o programa/api para o front-end ou qualquer outra aplicação que irá consumi-lo.
 
+Pergunta que se deve fazer : O que irei implementar é sobre comunicação HTTP?
+Se sim, deve estar aqui.
+Exemplo : Retonar 404 quando um recurso não é encontrado. Este check deve estar na aqui na camada dde API e não na Application.
+
 Regra : API depende apenas do .Application! Nunca o oposto.
 
 O que é para estar nesta lib :

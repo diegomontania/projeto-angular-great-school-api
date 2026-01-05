@@ -6,10 +6,12 @@ namespace GreatSchool.Domain.Entities
     public class ApresentacaoAPI
     {
         private List<string> _rotas { get; set; }
+
         public List<string> Rotas
         {
             get { return _rotas; }
         }
+
         public string MensagemAPI
         {
             get

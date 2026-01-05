@@ -1,6 +1,10 @@
 ﻿Representa as implementações técnicas. Essa camada proporciona COMO as coisas são feitas e não O QUE são feitas.
 Nessa camada também é possivel implementar serviços externos. Mantem questões técnicas de implementação longe das regras de negocio
 
+Pergunta que se deve fazer : O que irei implementar é sobre infraestrutura técnica, acesso a dados ou serviços externos?
+Se sim, deve estar aqui.
+Exemplo : Implementar um repositório usando Entity Framework para acessar o banco de dados.
+
 Regra : A camada da infraestrutura depende da cadama de aplicação .Application
         .Application e .Domain não dependem da .Infraestructure
 

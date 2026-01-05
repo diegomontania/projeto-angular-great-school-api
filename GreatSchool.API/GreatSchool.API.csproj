@@ -20,6 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\GreatSchool.Application\GreatSchool.Application.csproj" />
+    <ProjectReference Include="..\GreatSchool.Domain\GreatSchool.Domain.csproj" />
     <ProjectReference Include="..\GreatSchool.Infrastructure\GreatSchool.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

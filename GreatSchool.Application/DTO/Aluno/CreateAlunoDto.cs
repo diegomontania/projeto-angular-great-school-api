@@ -2,12 +2,9 @@
 
 namespace GreatSchool.Application.DTO.Aluno
 {
+    // CreateDtos should NOT have Id, because EF will generate it automatically.
     public class CreateAlunoDto
     {
-        [Required]
-        [Key()]
-        public int Id { get; set; }
-
         public string Nome { get; set; }
 
         [Required]

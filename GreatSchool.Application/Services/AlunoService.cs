@@ -56,14 +56,16 @@ namespace GreatSchool.Application.Services
 
         async Task<AlunoDto> IAlunoService.UpdateAlunoAsync(int id, AlunoDto dto)
         {
+            if (dto.Id != id) throw new ArgumentException($"Id mismatch: Id in the DTO:{dto.Id} does not match the Id in the route:{id}");
+
             //check if Aluno exists
             var existingAluno = await _alunoRepository.GetByIdAsync(id);
             if (existingAluno == null)
                 throw new KeyNotFoundException($"Aluno {id} not found");
 
             //convert UpdateAlunoDto to Aluno and update it
-            var aluno = _mapper.Map<Aluno>(dto);
-            var alounoAtualizado = await _alunoRepository.UpdateAsync(aluno);
+            _mapper.Map(dto, existingAluno);
+            var alounoAtualizado = await _alunoRepository.UpdateAsync(existingAluno);
 
             //Convert Aluno to AlunoDto to return
             var alunoDto = _mapper.Map<AlunoDto>(alounoAtualizado);

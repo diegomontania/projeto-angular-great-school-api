@@ -1,11 +1,7 @@
-using System.ComponentModel.DataAnnotations;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
 namespace GreatSchool.Domain.Entities
 {
-    public class Aluno
+    public class Aluno : BaseEntity
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string DddTelefone { get; set; }

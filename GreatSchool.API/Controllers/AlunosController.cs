@@ -57,7 +57,11 @@ namespace GreatSchool.API.Controllers
         public async Task<ActionResult<AlunoDto>> PostAluno(CreateAlunoDto alunoDto)
         {
             var alunoCriado = await _alunoService.CreateAlunoAsync(alunoDto);
-            return CreatedAtAction("GetAlunoAsync", new { id = alunoCriado.Id }, alunoDto);
+
+            if (alunoCriado == null)
+                BadRequest("Failed to create the aluno or ID is missing.");
+           
+            return CreatedAtAction(nameof(GetAluno), new { id = alunoCriado.Id }, alunoCriado);
         }
 
         // DELETE: api/Alunos/5

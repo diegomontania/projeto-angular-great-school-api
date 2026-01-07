@@ -48,6 +48,7 @@ namespace GreatSchool.API
             //adiciona repositorios
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<IRepository<Aluno>, Repository<Aluno>>();
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             //adiciona services
             services.AddScoped<IAlunoService, AlunoService>();

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GreatSchool.Domain.Entities;
 
 //following the steps : IRepository -> Repository -> ClassRepository
 
@@ -14,7 +12,7 @@ using System.Text;
 
 3. IAlunoRepository (Specific Interface for the Aluno entity)
     Purpose: Operations ONLY Aluno needs (GetByCPF, GetByEmail)
-    Why: Not all entities have CPF or Email - only Aluno does
+    Exemple: Not all entities have CPF or Email - only Aluno does
 */
 
 //The last 'IClassRepository' is the class who implement especific methods for that class.
@@ -26,7 +24,7 @@ using System.Text;
 
 namespace GreatSchool.Domain.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<T> where T : BaseEntity
     {
         public Task<IEnumerable<T>> GetAllAsync();
         public Task<T> GetByIdAsync(int id);

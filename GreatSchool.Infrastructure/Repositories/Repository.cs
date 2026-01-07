@@ -2,11 +2,10 @@
 using GreatSchool.Domain.Interfaces;
 using GreatSchool.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography;
 
 namespace GreatSchool.Infrastructure.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly GreatSchoolDBContext _context;
 
@@ -50,6 +49,14 @@ namespace GreatSchool.Infrastructure.Repositories
 
         public async Task<T> UpdateAsync(T entity)
         {
+            //prevent entity framework to create a new Aluno instead of updating.
+            //because entity framework tracks entities by their primary key (Id)
+            //and if the Id is 0, it will create a new entity
+            if (entity.Id == 0)
+                throw new Exception("Entity ID not found - entity was not updated!");
+
+            entity.UpdatedAt = DateTime.UtcNow;
+
             DbSet.Update(entity);
             await _context.SaveChangesAsync();
             return entity;
